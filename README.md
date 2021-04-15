@@ -1,3 +1,3 @@
-My Personal Site
+## My Personal Site
 
 Hosted on Porkbun
