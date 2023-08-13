@@ -111,7 +111,9 @@
         [type=reset],
         [type=submit],
         button {
-            -webkit-appearance: button
+            -webkit-appearance: button;
+            -moz-appearance: button;
+            appearance: button;
         }
 
         [type=button]::-moz-focus-inner,
@@ -163,6 +165,8 @@
 
         [type=search] {
             -webkit-appearance: textfield;
+            appearance: textfield;
+            appearance: textfield;
             outline-offset: -2px
         }
 
@@ -200,7 +204,7 @@
             --avatar-size: 90px;
             --avatar-circle-size: 90px;
             --avatar-circle-margin: calc(var(--avatar-size) - var(--avatar-circle-size));
-            --highlight-color: #ffca28;
+            --highlight-color: #28a6ff9e;
             --avatar-size: 100px;
             --inlay-shadow: rgba(0, 0, 0, 0.08) 0 2px 4px inset;
             --standard-border-radius: 4px;
@@ -811,7 +815,7 @@
                 </div>
                 <div>
                     <h1>Ryan Cruz</h1>
-                    <div class='subtitle'>Hello.</div>
+                    <!-- <div class='subtitle'>Hello.</div> -->
                 </div>
             </div>
             <nav>
@@ -829,9 +833,9 @@
         <section>
             <!-- <span class='tag'>Not Currently Job Seeking</span> -->
             <blockquote>
-                <span class='experience-years'><br /></span> 
+                <span class='experience-years'><br /></span> <br />
                 Currently building a CIAM solution for <a target='_blank' href='https://southwest.com'
-                    rel='noreferrer noopener nofollow'>Southwest</a>.<br />
+                    rel='noreferrer noopener nofollow'>Southwest Airlines</a>.<br />
                 Working remotely from <a target='_blank' href='https://goo.gl/maps/e8vRi7cAtAacdDqT8'
                     rel='noreferrer noopener nofollow'>Dallas, Texas</a>.<br />
             </blockquote>
@@ -852,14 +856,12 @@
                         </div>
                     </div>
                     <ul class='role-key-points'>
-                        <li>Building the platform used by thousands of VCs and investors around the world to raise
-                            capital</li>
-                        <li>Personally built the deal creation and management app, messaging, email marketing tools, and
-                            onboarding flow</li>
-                        <li>Mentoring other engineers, coaching, guiding project planning and execution</li>
-                        <li>Working remotely with the San Francisco team</li>
-                        <li>Stack: React, Typescript, Rails, Elasticsearch</li>
-                        <li class='role-tenure'>Mar 2020 - Present</li>
+                        <li>Building a modern Identity solution for Southwest.com customers</li>
+                        <li>Previously migrated legacy Identity solution for the Enterprise to a new Identity solution</li>
+                        <li>Building, mentoring, guiding, and always learning</li>
+                        <li>Working hybrid at the Dallas, TX HDQ</li>
+                        <li>Tech: Ping Identity, AWS, Terraform, Kubernetes</li>
+                        <li class='role-tenure'>Aug 2018 - Present</li>
                     </ul>
                 </li>
                 <li class='role'>
@@ -875,58 +877,9 @@
                         </div>
                     </div>
                     <ul class='role-key-points'>
-                        <li>Part of the early engineering team, through a period of rapid growth</li>
-                        <li>Responsible for key innovations such as Mixmax 2.0 (the current Gmail interface),
-                            Recommended Send Times, Inbox Syncing, and Insights</li>
-                        <li>Built and scaled very high-throughput event systems</li>
-                        <li>Drove technical and architectural decisions, guided junior engineers</li>
-                        <li>Worked remotely with the San Francisco team</li>
-                        <li>Stack: Node, React, Typescript, Mongo, Elasticsearch, Redis, AWS</li>
-                        <li class='role-tenure'>May 2016 - Feb 2020 (3 years, 9 months)</li>
-                    </ul>
-                </li>
-                <li class='role'>
-                    <div class='role-header'>
-                        <a href='https://www.vinomofo.com' target='_blank' rel='noreferrer noopener nofollow'
-                            class='org-logo'>
-                            <img src='vinomofo-light.png' alt='Vinomofo' class='org-logo-light' />
-                            <img src='vinomofo-dark.png' alt='Vinomofo' class='org-logo-dark' />
-                        </a>
-                        <div>
-                            <div class='role-title'>Vinomofo</div>
-                            <div class='subtitle'>Head of Engineering</div>
-                        </div>
-                    </div>
-                    <ul class='role-key-points'>
-                        <li>One of the largest startups in Australia</li>
-                        <li>Early employee, led the engineering team during a period of rapid growth (from a valuation
-                            of $500k to $100M)</li>
-                        <li>Wrote the current software platform (Rails), supporting over 500k users and 150 staff</li>
-                        <li>Worked remotely with the Melbourne team</li>
-                        <li>Stack: Rails, PostgreSQL, Elasticsearch</li>
-                        <li class='role-tenure'>Apr 2012 - Apr 2016 (4 years)</li>
-                    </ul>
-                </li>
-                <li class='role'>
-                    <div class='role-header'>
-                        <a href='https://www.originenergy.com' target='_blank' rel='noreferrer noopener nofollow'
-                            class='org-logo'>
-                            <img src='origin.png' alt='Origin' class='org-logo-light' />
-                            <img src='origin.png' alt='Origin' class='org-logo-dark' />
-                        </a>
-                        <div>
-                            <div class='role-title'>Origin</div>
-                            <div class='subtitle'>Software Engineer</div>
-                        </div>
-                    </div>
-                    <ul class='role-key-points'>
-                        <li>Built a CRM supporting over 1 million customers for one of Australia's largest companies
-                        </li>
-                        <li>Also worked in the data science team, building statistical models for predicting consumer
-                            behaviour using R</li>
-                        <li>Worked remotely for three years with the Melbourne team</li>
-                        <li>Stack: ASP.NET, C#, MSSQL</li>
-                        <li class='role-tenure'>Jul 2007 - Apr 2012 (4 years, 9 months)</li>
+                        <li>Provided technical support for all mobile and desktop Apple devices and related web and cloud services</li>
+                        <li>Worked remotely during University in Athens, GA</li>
+                        <li class='role-tenure'>Jul 2016 - May 2018</li>
                     </ul>
                 </li>
             </ul>
@@ -936,21 +889,21 @@
             <ul>
                 <li class='role'>
                     <div class='role-header'>
-                        <a href='https://www.unisa.edu.au' target='_blank' rel='noreferrer noopener nofollow'
+                        <a href='https://engineering.uga.edu' target='_blank' rel='noreferrer noopener nofollow'
                             class='org-logo'>
-                            <img src='unisa.png' alt='UniSA' class='org-logo-light' />
-                            <img src='unisa.png' alt='UniSA' class='org-logo-dark' />
+                            <img src='uni.png' alt='UniSA' class='org-logo-light' />
+                            <img src='uni.png' alt='UniSA' class='org-logo-dark' />
                         </a>
                         <div>
-                            <div class='role-title'>Bachelor of Computer Science</div>
-                            <div class='subtitle'>University of South Australia</div>
+                            <div class='role-title'>Bachelor of Computer Systems Engineering</div>
+                            <div class='subtitle'>University of Georgia</div>
                         </div>
                     </div>
                     <ul class='role-key-points'>
-                        <li>Winner (2005, 2006, 2007) - Most Outstanding Student in a Degree Programme</li>
-                        <li>Dean's and Chancellor's Merit Lists</li>
-                        <li>6.92 / 7.00 GPA</li>
-                        <li class='role-tenure'>2005 - 2007</li>
+                        <li>Zell Miller Scholarship</li>
+                        <li>Presidential Scholar</li>
+                        <li>Certificate in Emerging Engineering Leaders Development Program</li>
+                        <li class='role-tenure'>2014 - 2018</li>
                     </ul>
                 </li>
             </ul>
