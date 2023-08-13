@@ -195,6 +195,13 @@
             display: none
         }
 
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            font-size: 14px;
+            color: #999;
+        }
+
         /* -------------------------------------------------------
        * Variables
        * ------------------------------------------------------- */
@@ -857,7 +864,8 @@
                     </div>
                     <ul class='role-key-points'>
                         <li>Building a modern Identity solution for Southwest.com customers</li>
-                        <li>Previously migrated legacy Identity solution for the Enterprise to a new Identity solution</li>
+                        <li>Previously migrated legacy Identity solution for the Enterprise to a new Identity solution
+                        </li>
                         <li>Building, mentoring, guiding, and always learning</li>
                         <li>Working hybrid at the Dallas, TX HDQ</li>
                         <li>Tech: Ping Identity, AWS, Terraform, Kubernetes</li>
@@ -877,7 +885,8 @@
                         </div>
                     </div>
                     <ul class='role-key-points'>
-                        <li>Provided technical support for all mobile and desktop Apple devices and related web and cloud services</li>
+                        <li>Provided technical support for all mobile and desktop Apple devices and related web and
+                            cloud services</li>
                         <li>Worked remotely during University in Athens, GA</li>
                         <li class='role-tenure'>Jul 2016 - May 2018</li>
                     </ul>
@@ -909,16 +918,27 @@
             </ul>
         </section>
     </div>
+    <footer>
+        <!-- copyright -->
+        &copy; Ryan Cruz <span id="currentYear"></span>
+    </footer>
 </body>
 <script>
-     // ------------------------------------------------------------------------------------------
-        //  Years since
-        // ------------------------------------------------------------------------------------------ 
-        const startDate = new Date('August 27, 2018'); // Replace with your start date
-        const currentDate = new Date();
-        const yearsOfExperience = currentDate.getFullYear() - startDate.getFullYear();
+    // ------------------------------------------------------------------------------------------
+    //  Years since
+    // ------------------------------------------------------------------------------------------ 
+    const startDate = new Date('August 27, 2018'); // Replace with your start date
+    const currentDate = new Date();
+    const yearsOfExperience = currentDate.getFullYear() - startDate.getFullYear();
 
-        const element = document.querySelector('.experience-years');
-        element.innerHTML = `Cybersecurity Engineer with ${yearsOfExperience} years of experience.`;
+    const element = document.querySelector('.experience-years');
+    element.innerHTML = `Cybersecurity Engineer with ${yearsOfExperience} years of experience.`;
+
+    // ------------------------------------------------------------------------------------------
+    //  Copywrite Current Year
+    // ------------------------------------------------------------------------------------------ 
+    const currentYear = new Date().getFullYear();
+    document.getElementById("currentYear").textContent = currentYear;
 </script>
+
 </html>
