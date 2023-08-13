@@ -928,12 +928,20 @@
     // ------------------------------------------------------------------------------------------
     //  Years since
     // ------------------------------------------------------------------------------------------ 
-    const startDate = new Date('August 27, 2018'); // Replace with your start date
+    const startDate = new Date('2018-08-27'); // Replace with your start date
     const currentDate = new Date();
-    const yearsOfExperience = currentDate.getFullYear() - startDate.getFullYear();
+    const yearsDiff = currentDate.getFullYear() - startDate.getFullYear();
 
-    const element = document.querySelector('.experience-years');
-    element.innerHTML = `Cybersecurity Engineer with ${yearsOfExperience} years of experience.`;
+    if (
+        currentDate.getMonth() > startDate.getMonth() ||
+        (currentDate.getMonth() === startDate.getMonth() && currentDate.getDate() >= startDate.getDate())
+    ) {
+        const element = document.querySelector('.experience-years');
+        element.innerHTML = `Cybersecurity Engineer with ${yearsDiff} years of experience.`;
+    } else {
+        const element = document.querySelector('.experience-years');
+        element.innerHTML = `Cybersecurity Engineer with ${yearsDiff - 1} years of experience.`;
+    }
 
     // ------------------------------------------------------------------------------------------
     //  Copywrite Current Year
