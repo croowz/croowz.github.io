@@ -386,9 +386,6 @@
         }
 
         .avatar-image {
-            background-image: image-set(url("Profile-nobg.jxl") type("image/jxl"),
-                    url("Profile-nobg.webp") type("image/webp"),
-                    url("Profile-nobg.png") type("image/png"));
             position: absolute;
             bottom: 0;
             width: var(--avatar-size);
@@ -821,7 +818,11 @@
         <header>
             <div class='avatar-and-name-container'>
                 <div class='avatar-container'>
-                    <img alt='Ryan' class='avatar-image' />
+                    <picture>
+                        <source srcset="Profile-nobg.jxl" type="image/jxl">
+                        <source srcset="Profile-nobg.webp" type="image/webp">
+                        <img src="Profile-nobg.png" alt="Ryan" class="avatar-image">
+                    </picture>
                 </div>
                 <div>
                     <h1>Ryan Cruz</h1>
