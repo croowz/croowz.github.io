@@ -953,6 +953,31 @@
     <footer>
         <!-- copyright -->
         &copy; Ryan Cruz <span id="currentYear"></span>
+    <div class="ip-geolocation">
+        <span id="ipAddress"></span>
+        <span id="geolocation"></span>
+    </div>
+    <script>
+        fetch('https://api.ipify.org?format=json')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('ipAddress').textContent = `IP: ${data.ip}`;
+
+                fetch(`https://ipapi.co/${data.ip}/json/`)
+                    .then(response => response.json())
+                    .then(locationData => {
+                        document.getElementById('geolocation').textContent = `Location: ${locationData.city}, ${locationData.region}, ${locationData.country_name}`;
+                    })
+                    .catch(error => {
+                        console.error("Error fetching geolocation:", error);
+                        document.getElementById('geolocation').textContent = "Location: Unavailable";
+                    });
+            })
+            .catch(error => {
+                console.error("Error fetching IP:", error);
+                document.getElementById('ipAddress').textContent = "IP: Unavailable";
+            });
+    </script>
     </footer>
 </body>
 <script>
