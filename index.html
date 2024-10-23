@@ -872,18 +872,40 @@
                             </picture>
                         </a>
                         <div>
-                            <div class='role-title'>Southwest</div>
-                            <div class='subtitle'>Senior Cybersecurity Engineer</div>
+                            <div class='role-title'>Southwest Airlines</div>
+                            <div class='subtitle'>Senior Cybersecurity Engineer - CIAM</div>
                         </div>
                     </div>
                     <ul class='role-key-points'>
                         <li>Building a modern Identity solution for Southwest.com customers</li>
-                        <li>Previously migrated legacy Identity solution for the Enterprise to a new Identity solution
-                        </li>
-                        <li>Building, mentoring, guiding, and always learning</li>
-                        <li>Working hybrid at the Dallas, TX HDQ</li>
                         <li>Tech: Ping Identity, AWS, Terraform, Kubernetes</li>
-                        <li class='role-tenure'>Aug 2018 - Present</li>
+                        <li class='role-tenure'>Oct 2022 - Present</li>
+                    </ul>
+                    <div class='role-header'>
+                        <a target='_blank' rel='noreferrer noopener nofollow' class='org-logo'>
+                        </a>
+                        <div>
+                            <div class='subtitle'>Cybersecurity Engineer - Workforce</div>
+                        </div>
+                    </div>
+                    <ul class='role-key-points'>
+                        <li>Migrated legacy Identity Provider for the Enterprise to a modern Identity Provider
+                        </li>
+                        <li>Stood up new AWS infrastructure for the Workforce solution</li>
+                        <li class='role-tenure'>May 2021 - Oct 2022</li>
+                    </ul>
+                    <div class='role-header'>
+                        <a target='_blank' rel='noreferrer noopener nofollow' class='org-logo'>
+                        </a>
+                        <div>
+                            <div class='subtitle'>Associate Cybersecurity Engineer - Operations</div>
+                        </div>
+                    </div>
+                    <ul class='role-key-points'>
+                        <li>Supported various Cybersecurity services for the Enterprise</li>
+                        </li>
+                        <li>Tech: CyberArk, Active Directory, AWS</li>
+                        <li class='role-tenure'>Aug 2018 - Oct 2021</li>
                     </ul>
                 </li>
                 <li class='role'>
@@ -953,31 +975,35 @@
     <footer>
         <!-- copyright -->
         &copy; Ryan Cruz <span id="currentYear"></span>
-    <div class="ip-geolocation">
-        <span id="ipAddress"></span>
-        <span id="geolocation"></span>
-    </div>
-    <script>
-        fetch('https://api.ipify.org?format=json')
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('ipAddress').textContent = `IP: ${data.ip}`;
+        <div class="ip-geolocation">
+            <span id="ipAddress"></span>
+            <span>|</span>
+            <span id="geolocation"></span>
+        </div>
+        <script>
+            // ------------------------------------------------------------------------------------------
+            //  IP Geolocation
+            // ------------------------------------------------------------------------------------------
+            fetch('https://api.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('ipAddress').textContent = `IP: ${data.ip}`;
 
-                fetch(`https://ipapi.co/${data.ip}/json/`)
-                    .then(response => response.json())
-                    .then(locationData => {
-                        document.getElementById('geolocation').textContent = `Location: ${locationData.city}, ${locationData.region}, ${locationData.country_name}`;
-                    })
-                    .catch(error => {
-                        console.error("Error fetching geolocation:", error);
-                        document.getElementById('geolocation').textContent = "Location: Unavailable";
-                    });
-            })
-            .catch(error => {
-                console.error("Error fetching IP:", error);
-                document.getElementById('ipAddress').textContent = "IP: Unavailable";
-            });
-    </script>
+                    fetch(`https://ipapi.co/${data.ip}/json/`)
+                        .then(response => response.json())
+                        .then(locationData => {
+                            document.getElementById('geolocation').textContent = `Location: ${locationData.city}, ${locationData.region}, ${locationData.country_name}`;
+                        })
+                        .catch(error => {
+                            console.error("Error fetching geolocation:", error);
+                            document.getElementById('geolocation').textContent = "Location: Unavailable";
+                        });
+                })
+                .catch(error => {
+                    console.error("Error fetching IP:", error);
+                    document.getElementById('ipAddress').textContent = "IP: Unavailable";
+                });
+        </script>
     </footer>
 </body>
 <script>
