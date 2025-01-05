@@ -1,55 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Define initial image sources based on theme -->
-    <script>
-      window.__INITIAL_IMAGE_SOURCES__ = {};
-      
-      function updateImageSources() {
-        const isDark = document.documentElement.classList.contains('dark');
-        window.__INITIAL_IMAGE_SOURCES__ = {
-          'apple-logo': isDark ? {
-            jxl: '/images/apple-dark.jxl',
-            webp: '/images/apple-dark.webp',
-            png: '/images/apple-dark.png'
-          } : {
-            jxl: '/images/apple-light.jxl',
-            webp: '/images/apple-light.webp',
-            png: '/images/apple-light.png'
-          }
-          // Add other image mappings here if needed
-        };
-      }
-      
-      // Set initial sources
-      updateImageSources();
-      
-      // Watch for theme changes
-      const observer = new MutationObserver(() => {
-        updateImageSources();
-      });
-      
-      observer.observe(document.documentElement, {
-        attributes: true,
-        attributeFilter: ['class']
-      });
-    </script>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Personal website showcasing professional experience and skills" />
     <title>Personal Website</title>
-    
-    <!-- Early theme detection script that runs before React -->
+
+    <!-- Critical image preloading for both themes -->
     <script>
       (function() {
-        // Create a global theme state that React can read immediately
+        // Images that need preloading for both themes
+        const criticalImages = [
+          { light: '/images/apple-light.webp', dark: '/images/apple-dark.webp' },
+          // Add other theme-dependent images here as needed
+        ];
+
+        // Helper function to create and append preload links
+        function preloadImage(src, importance = 'high') {
+          const link = document.createElement('link');
+          link.rel = 'preload';
+          link.as = 'image';
+          link.href = src;
+          link.type = 'image/webp';
+          link.importance = importance;  // Tells the browser how critical this resource is
+          document.head.appendChild(link);
+        }
+
+        // Preload all critical images immediately
+        criticalImages.forEach(({ light, dark }) => {
+          // Preload both versions of each image
+          preloadImage(light);
+          preloadImage(dark);
+        });
+
+        // Set up our initial theme state
         window.__INITIAL_THEME_STATE__ = {
           isDark: false,
           source: 'system'
         };
 
-        // Determine the theme from localStorage or system preference
+        // Determine the initial theme
         const savedPreference = localStorage.getItem('darkMode');
         if (savedPreference !== null) {
           window.__INITIAL_THEME_STATE__.isDark = JSON.parse(savedPreference);
@@ -59,29 +50,42 @@
           window.__INITIAL_THEME_STATE__.source = 'system';
         }
 
-        // Apply the theme to document immediately
+        // Apply the theme immediately
         if (window.__INITIAL_THEME_STATE__.isDark) {
           document.documentElement.classList.add('dark');
         }
-      })();
-    </script>
 
-    <!-- Preload critical images based on initial theme -->
-    <script>
-      // Add preload links dynamically based on theme
-      const preloadLinks = document.createDocumentFragment();
-      const isDark = window.__INITIAL_THEME_STATE__.isDark;
-      
-      // Only preload the images for the current theme
-      const imageUrl = isDark ? '/images/apple-dark.webp' : '/images/apple-light.webp';
-      const link = document.createElement('link');
-      link.rel = 'preload';
-      link.as = 'image';
-      link.href = imageUrl;
-      link.type = 'image/webp';
-      preloadLinks.appendChild(link);
-      
-      document.head.appendChild(preloadLinks);
+        // Set up image sources mapping
+        window.__INITIAL_IMAGE_SOURCES__ = {};
+        
+        function updateImageSources() {
+          const isDark = document.documentElement.classList.contains('dark');
+          window.__INITIAL_IMAGE_SOURCES__ = {
+            'apple-logo': isDark ? {
+              jxl: '/images/apple-dark.jxl',
+              webp: '/images/apple-dark.webp',
+              png: '/images/apple-dark.png'
+            } : {
+              jxl: '/images/apple-light.jxl',
+              webp: '/images/apple-light.webp',
+              png: '/images/apple-light.png'
+            }
+          };
+        }
+
+        // Set initial image sources
+        updateImageSources();
+
+        // Watch for theme changes
+        const observer = new MutationObserver(() => {
+          updateImageSources();
+        });
+
+        observer.observe(document.documentElement, {
+          attributes: true,
+          attributeFilter: ['class']
+        });
+      })();
     </script>
   </head>
   <body>
