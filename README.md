@@ -2,22 +2,21 @@
 
 My personal website showcasing my professional experience and background. Visit it at [ryancruz.com](https://ryancruz.com/)
 
-## Features
+## What's Here
 
-- Responsive design that works across desktop and mobile devices
-- Automatic dark/light theme switching based on system preferences
-- Theme preference persistence using local storage
-- Progressive image loading using WebP and JXL formats with PNG fallbacks
-- IP geolocation tracking for visitors
-- Dynamically calculated years of experience
+- A simple site made with overkill frameworks to practice using them.
+- Shows my work history and education.
+- Neat features like dark mode, progressive enhancement for images, and a menu of links to some stuff that may be useful for a cv site.
 
-## Technology Stack
+## Working on it
 
-- Pure HTML/CSS/JavaScript without any frameworks
-- Hosted on [Cloudflare](https://dash.cloudflare.com/) using GitHub Pages
-- Resume created with [Overleaf](https://www.overleaf.com/) LaTeX editor
-- Image optimization using WebP and JPEG XL formats
+1. Make sure you have [Bun](https://bun.sh/) installed.
+2. Clone this code to your computer.
+3. Open the folder in your terminal.
+4. Run: `bun install`
+5. Then run: `bun run dev`
+6. The site will open in your web browser (usually at `http://localhost:5173`).
 
-## Development
+## Building the Site
 
-The site is intentionally built with vanilla web technologies for maximum performance and simplicity. To run locally, simply open `index.html` in a web browser.
+Currently, this is all handled by [CloudFlare Pages](https://dash.cloudflare.com/). The site is built and deployed automatically when changes are pushed to the `source` branch.
