@@ -10,7 +10,10 @@ const workExperience = [
     title: "Senior Cybersecurity Engineer",
     company: "Southwest",
     period: "Aug 2018 - Present",
-    description: "Building a modern Identity solution for Southwest.com customers. Previously migrated legacy Identity solution for the Enterprise to a new Identity solution",
+    descriptions: [
+      "Building a modern Identity solution for Southwest.com customers.",
+      "Previously migrated legacy Identity solution for the Enterprise to a new Identity solution"
+    ],
     logos: {
       jxl: "/images/LUV.jxl",
       webp: "/images/LUV.webp",
@@ -21,7 +24,9 @@ const workExperience = [
     title: "Mac+ Technical Advisor",
     company: "Apple",
     period: "Jul 2016 - May 2018",
-    description: "Provided technical support for all mobile and desktop Apple devices and related web and cloud services",
+    descriptions: [
+      "Provided technical support for all mobile and desktop Apple devices and related web and cloud services"
+    ],
     logos: {
       jxl: "/images/apple-light.jxl",
       webp: "/images/apple-light.webp",
@@ -33,21 +38,25 @@ const workExperience = [
       png: "/images/apple-dark.png"
     }
   }
-]
+];
 
 const education = [
   {
     school: "University of Georgia",
     degree: "Bachelor of Computer Systems Engineering",
     period: "2014 - 2018",
-    description: "Zell Miller Scholarship \n Presidential Scholar \n Certificate in Emerging Engineering Leaders Development Program",
+    descriptions: [
+      "Zell Miller Scholarship",
+      "Presidential Scholar",
+      "Certificate in Emerging Engineering Leaders Development Program"
+    ],
     logos: {
       jxl: "/images/uni.jxl",
       webp: "/images/uni.webp",
       png: "/images/uni.png"
     }
   }
-]
+];
 
 function App() {
   // Initialize dark mode with a sophisticated preference system
@@ -111,7 +120,7 @@ function App() {
       <main className="max-w-4xl mx-auto">
         <ProfileSection />
 
-        {/* Work Experience Section - Maps through the experience array */}
+        {/* Work Experience Section */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold mb-6 text-center">Work Experience</h2>
           <div className="space-y-6">
@@ -138,9 +147,11 @@ function App() {
                 <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">
                   {experience.period}
                 </p>
-                <p className="text-gray-600 dark:text-gray-300">
-                  {experience.description}
-                </p>
+                <div className="text-gray-600 dark:text-gray-300 space-y-2">
+                  {experience.descriptions && experience.descriptions.map((desc, descIndex) => (
+                    <p key={descIndex}>{desc}</p>
+                  ))}
+                </div>
               </div>
             ))}
           </div>
@@ -172,9 +183,11 @@ function App() {
                 <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">
                   {edu.period}
                 </p>
-                <p className="text-gray-600 dark:text-gray-300">
-                  {edu.description}
-                </p>
+                <div className="text-gray-600 dark:text-gray-300 space-y-2">
+                  {edu.descriptions && edu.descriptions.map((desc, descIndex) => (
+                    <p key={descIndex}>{desc}</p>
+                  ))}
+                </div>
               </div>
             ))}
           </div>
