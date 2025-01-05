@@ -59,51 +59,7 @@ const education = [
 ];
 
 function App() {
-  // Initialize dark mode with a sophisticated preference system
-  const [darkMode, setDarkMode] = useState(() => {
-    // First check if there's a saved preference in localStorage
-    const savedPreference = localStorage.getItem('darkMode');
-    if (savedPreference !== null) {
-      return JSON.parse(savedPreference);
-    }
-
-    // If no saved preference, check system preference
-    if (window.matchMedia) {
-      return window.matchMedia('(prefers-color-scheme: dark)').matches;
-    }
-
-    // Default to light mode if no preferences are found
-    return false;
-  });
-
-  // Save dark mode preference whenever it changes
-  useEffect(() => {
-    localStorage.setItem('darkMode', JSON.stringify(darkMode));
-  }, [darkMode]);
-
-  // Listen for system preference changes
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-
-    // Only update if there's no saved preference
-    const handleChange = (e) => {
-      if (localStorage.getItem('darkMode') === null) {
-        setDarkMode(e.matches);
-      }
-    };
-
-    mediaQuery.addEventListener('change', handleChange);
-    return () => mediaQuery.removeEventListener('change', handleChange);
-  }, []);
-
-  // Apply dark mode class to HTML element
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add('dark')
-    } else {
-      document.documentElement.classList.remove('dark')
-    }
-  }, [darkMode])
+  // We no longer need theme state here as it's handled by ThemeContext
 
   return (
     <div className="min-h-screen p-4 md:p-8">
@@ -114,7 +70,7 @@ function App() {
 
       {/* Theme Toggle Button - Fixed position in the top right */}
       <div className="fixed top-4 right-4">
-        <ThemeToggle darkMode={darkMode} setDarkMode={setDarkMode} />
+        <ThemeToggle />
       </div>
 
       <main className="max-w-4xl mx-auto">

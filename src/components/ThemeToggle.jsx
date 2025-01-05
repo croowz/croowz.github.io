@@ -1,12 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
 import { SunIcon, MoonIcon, ComputerDesktopIcon } from '@heroicons/react/24/outline';
+import { useTheme } from '../contexts/ThemeContext';
 
-const ThemeToggle = ({ darkMode, setDarkMode }) => {
+const ThemeToggle = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isUsingSystem, setIsUsingSystem] = useState(() => {
-    return localStorage.getItem('darkMode') === null;
-  });
   const menuRef = useRef();
+  const [themeState, setThemeState] = useTheme();
 
   // Close menu when clicking outside
   useEffect(() => {
@@ -20,17 +19,12 @@ const ThemeToggle = ({ darkMode, setDarkMode }) => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  const resetToSystem = () => {
-    localStorage.removeItem('darkMode');
-    setIsUsingSystem(true);
-    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    setDarkMode(systemPrefersDark);
-  };
-
-  const setTheme = (isDark) => {
-    setDarkMode(isDark);
-    setIsUsingSystem(false);
-    localStorage.setItem('darkMode', JSON.stringify(isDark));
+  const setTheme = (isDark, source) => {
+    setThemeState({
+      isDark,
+      source
+    });
+    setIsOpen(false);
   };
 
   return (
@@ -41,9 +35,9 @@ const ThemeToggle = ({ darkMode, setDarkMode }) => {
                    hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
         aria-label="Theme settings"
       >
-        {isUsingSystem ? (
+        {themeState.source === 'system' ? (
           <ComputerDesktopIcon className="w-6 h-6" />
-        ) : darkMode ? (
+        ) : themeState.isDark ? (
           <MoonIcon className="w-6 h-6" />
         ) : (
           <SunIcon className="w-6 h-6" />
@@ -53,30 +47,24 @@ const ThemeToggle = ({ darkMode, setDarkMode }) => {
       {isOpen && (
         <div className="absolute right-0 mt-2 w-48 py-2 bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700">
           <button
-            onClick={() => {
-              setTheme(false);
-              setIsOpen(false);
-            }}
+            onClick={() => setTheme(false, 'user')}
             className="w-full px-4 py-2 text-left hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"
           >
             <SunIcon className="w-5 h-5" />
             Light
           </button>
           <button
-            onClick={() => {
-              setTheme(true);
-              setIsOpen(false);
-            }}
+            onClick={() => setTheme(true, 'user')}
             className="w-full px-4 py-2 text-left hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"
           >
             <MoonIcon className="w-5 h-5" />
             Dark
           </button>
           <button
-            onClick={() => {
-              resetToSystem();
-              setIsOpen(false);
-            }}
+            onClick={() => setTheme(
+              window.matchMedia('(prefers-color-scheme: dark)').matches,
+              'system'
+            )}
             className="w-full px-4 py-2 text-left hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"
           >
             <ComputerDesktopIcon className="w-5 h-5" />

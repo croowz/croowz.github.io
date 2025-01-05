@@ -6,6 +6,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Personal website showcasing professional experience and skills" />
     <title>Personal Website</title>
+    
+    <!-- Early theme detection script that runs before React -->
+    <script>
+      (function() {
+        // Create a global theme state that React can read immediately
+        window.__INITIAL_THEME_STATE__ = {
+          isDark: false,
+          source: 'system'
+        };
+
+        // Determine the theme from localStorage or system preference
+        const savedPreference = localStorage.getItem('darkMode');
+        if (savedPreference !== null) {
+          window.__INITIAL_THEME_STATE__.isDark = JSON.parse(savedPreference);
+          window.__INITIAL_THEME_STATE__.source = 'localStorage';
+        } else if (window.matchMedia?.('(prefers-color-scheme: dark)').matches) {
+          window.__INITIAL_THEME_STATE__.isDark = true;
+          window.__INITIAL_THEME_STATE__.source = 'system';
+        }
+
+        // Apply the theme to document immediately
+        if (window.__INITIAL_THEME_STATE__.isDark) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+
+    <!-- Preload critical images based on initial theme -->
+    <script>
+      // Add preload links dynamically based on theme
+      const preloadLinks = document.createDocumentFragment();
+      const isDark = window.__INITIAL_THEME_STATE__.isDark;
+      
+      // Only preload the images for the current theme
+      const imageUrl = isDark ? '/images/apple-dark.webp' : '/images/apple-light.webp';
+      const link = document.createElement('link');
+      link.rel = 'preload';
+      link.as = 'image';
+      link.href = imageUrl;
+      link.type = 'image/webp';
+      preloadLinks.appendChild(link);
+      
+      document.head.appendChild(preloadLinks);
+    </script>
   </head>
   <body>
     <div id="root"></div>

@@ -3,8 +3,65 @@
 @tailwind utilities;
 
 @layer base {
-  /* This ensures smooth transitions when switching between light and dark modes */
+  /* Set up the theme with proper color schemes */
+  :root {
+    color-scheme: light;
+  }
+
+  :root.dark {
+    color-scheme: dark;
+  }
+
+  /* Handle background transitions */
   body {
-    @apply bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-200;
+    @apply bg-white;
+    transition: background-color 200ms ease;
+  }
+
+  .dark body {
+    @apply bg-gray-900;
+  }
+
+  /* Text colors should change instantly */
+  body {
+    @apply text-gray-900;
+    transition: background-color 200ms ease;
+  }
+
+  .dark body {
+    @apply text-white;
+  }
+
+  /* Prevent content shift during theme changes */
+  html {
+    min-height: 100vh;
+  }
+
+  /* Only transition background colors and borders, not text */
+  * {
+    @apply border-gray-200;
+    transition-property: background-color, border-color;
+    transition-duration: 200ms;
+    transition-timing-function: ease;
+  }
+
+  .dark * {
+    @apply border-gray-700;
+  }
+
+  /* Remove all transitions from specific elements */
+  img, picture, picture *,
+  h1, h2, h3, h4, h5, h6, p, span, a, button {
+    transition: none !important;
+  }
+
+  /* Card backgrounds should transition smoothly */
+  .bg-white, .bg-gray-800, .bg-gray-900 {
+    transition: background-color 200ms ease;
+  }
+  
+  /* But their text content should not */
+  .bg-white *, .bg-gray-800 *, .bg-gray-900 * {
+    transition: none !important;
   }
 }
