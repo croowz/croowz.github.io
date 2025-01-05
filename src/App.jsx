@@ -92,6 +92,7 @@ function App() {
                     darkLogos={experience.darkLogos}
                     alt={`${experience.company} logo`}
                     className="w-12 h-12 object-contain"
+                    imageId={experience.company === 'Apple' ? 'apple-logo' : null}
                   />
                   <div>
                     <h3 className="text-xl font-semibold">{experience.title}</h3>

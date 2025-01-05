@@ -1,6 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Define initial image sources based on theme -->
+    <script>
+      window.__INITIAL_IMAGE_SOURCES__ = {};
+      
+      function updateImageSources() {
+        const isDark = document.documentElement.classList.contains('dark');
+        window.__INITIAL_IMAGE_SOURCES__ = {
+          'apple-logo': isDark ? {
+            jxl: '/images/apple-dark.jxl',
+            webp: '/images/apple-dark.webp',
+            png: '/images/apple-dark.png'
+          } : {
+            jxl: '/images/apple-light.jxl',
+            webp: '/images/apple-light.webp',
+            png: '/images/apple-light.png'
+          }
+          // Add other image mappings here if needed
+        };
+      }
+      
+      // Set initial sources
+      updateImageSources();
+      
+      // Watch for theme changes
+      const observer = new MutationObserver(() => {
+        updateImageSources();
+      });
+      
+      observer.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['class']
+      });
+    </script>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
