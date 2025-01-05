@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import ThemeToggle from './components/ThemeToggle'
 import ProgressiveImage from './components/ProgressiveImage'
 import ProfileSection from './components/ProfileSection'
+import HamburgerMenu from './components/HamburgerMenu' // Import the new component
 
 // Sample work experience data - you can modify this array to add your own experiences
 const workExperience = [
@@ -56,12 +57,12 @@ function App() {
     if (savedPreference !== null) {
       return JSON.parse(savedPreference);
     }
-    
+
     // If no saved preference, check system preference
     if (window.matchMedia) {
       return window.matchMedia('(prefers-color-scheme: dark)').matches;
     }
-    
+
     // Default to light mode if no preferences are found
     return false;
   });
@@ -74,14 +75,14 @@ function App() {
   // Listen for system preference changes
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    
+
     // Only update if there's no saved preference
     const handleChange = (e) => {
       if (localStorage.getItem('darkMode') === null) {
         setDarkMode(e.matches);
       }
     };
-    
+
     mediaQuery.addEventListener('change', handleChange);
     return () => mediaQuery.removeEventListener('change', handleChange);
   }, []);
@@ -97,6 +98,11 @@ function App() {
 
   return (
     <div className="min-h-screen p-4 md:p-8">
+      {/* Hamburger Menu - Fixed position in the top left */}
+      <div className="fixed top-4 left-4">
+        <HamburgerMenu />
+      </div>
+
       {/* Theme Toggle Button - Fixed position in the top right */}
       <div className="fixed top-4 right-4">
         <ThemeToggle darkMode={darkMode} setDarkMode={setDarkMode} />
@@ -112,7 +118,7 @@ function App() {
             {workExperience.map((experience, index) => (
               <div
                 key={index}
-                className="border border-gray-200 dark:border-gray-700 rounded-lg p-6 
+                className="border border-gray-200 dark:border-gray-700 rounded-lg p-6
                          hover:shadow-lg transition-shadow bg-white dark:bg-gray-800"
               >
                 <div className="flex items-center gap-4 mb-4">
@@ -147,7 +153,7 @@ function App() {
             {education.map((edu, index) => (
               <div
                 key={index}
-                className="border border-gray-200 dark:border-gray-700 rounded-lg p-6 
+                className="border border-gray-200 dark:border-gray-700 rounded-lg p-6
                          hover:shadow-lg transition-shadow bg-white dark:bg-gray-800"
               >
                 <div className="flex items-center gap-4 mb-4">
