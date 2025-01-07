@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ThemeToggle from './components/ThemeToggle'
 import ProfileSection from './components/ProfileSection'
 import WorkExperience from './components/WorkExperience'
@@ -6,19 +6,24 @@ import Education from './components/Education'
 import HamburgerMenu from './components/HamburgerMenu'
 
 function App() {
+  // Reset scroll position when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
-    <div className="min-h-screen p-4 md:p-8">
+    <div className="min-h-screen p-4 md:p-8 relative">
       {/* Hamburger Menu - Fixed position in the top left */}
-      <div className="fixed top-4 left-4">
+      <div className="fixed top-4 left-4 z-50">
         <HamburgerMenu />
       </div>
 
       {/* Theme Toggle Button - Fixed position in the top right */}
-      <div className="fixed top-4 right-4">
+      <div className="fixed top-4 right-4 z-50">
         <ThemeToggle />
       </div>
 
-      <main className="max-w-4xl mx-auto">
+      <main className="max-w-4xl mx-auto pt-12">
         <ProfileSection />
         <WorkExperience />
         <Education />
