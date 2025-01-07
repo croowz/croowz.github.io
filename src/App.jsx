@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import ThemeToggle from './components/ThemeToggle'
 import ProgressiveImage from './components/ProgressiveImage'
+import SimpleImage from './components/SimpleImage'
 import ProfileSection from './components/ProfileSection'
 import HamburgerMenu from './components/HamburgerMenu' // Import the new component
 
@@ -14,11 +15,7 @@ const workExperience = [
       "Building a modern Identity solution for Southwest.com customers.",
       "Previously migrated legacy Identity solution for the Enterprise to a new Identity solution"
     ],
-    logos: {
-      jxl: "/images/LUV.jxl",
-      webp: "/images/LUV.webp",
-      png: "/images/LUV.png"
-    }
+    logoPath: "/images/LUV.svg"
   },
   {
     title: "Mac+ Technical Advisor",
@@ -27,16 +24,8 @@ const workExperience = [
     descriptions: [
       "Provided technical support for all mobile and desktop Apple devices and related web and cloud services"
     ],
-    logos: {
-      jxl: "/images/apple-light.jxl",
-      webp: "/images/apple-light.webp",
-      png: "/images/apple-light.png"
-    },
-    darkLogos: {
-      jxl: "/images/apple-dark.jxl",
-      webp: "/images/apple-dark.webp",
-      png: "/images/apple-dark.png"
-    }
+    logoPath: "/images/apple-light.svg",
+    darkLogoPath: "/images/apple-dark.svg"
   }
 ];
 
@@ -50,11 +39,7 @@ const education = [
       "Presidential Scholar",
       "Certificate in Emerging Engineering Leaders Development Program"
     ],
-    logos: {
-      jxl: "/images/uni.jxl",
-      webp: "/images/uni.webp",
-      png: "/images/uni.png"
-    }
+    logoPath: "/images/uni.svg"
   }
 ];
 
@@ -87,12 +72,11 @@ function App() {
                          hover:shadow-lg transition-shadow bg-white dark:bg-gray-800"
               >
                 <div className="flex items-center gap-4 mb-4">
-                  <ProgressiveImage
-                    logos={experience.logos}
-                    darkLogos={experience.darkLogos}
+                  <SimpleImage
+                    logoPath={experience.logoPath}
+                    darkLogoPath={experience.darkLogoPath}
                     alt={`${experience.company} logo`}
                     className="w-12 h-12 object-contain"
-                    imageId={experience.company === 'Apple' ? 'apple-logo' : null}
                   />
                   <div>
                     <h3 className="text-xl font-semibold">{experience.title}</h3>
@@ -125,8 +109,8 @@ function App() {
                          hover:shadow-lg transition-shadow bg-white dark:bg-gray-800"
               >
                 <div className="flex items-center gap-4 mb-4">
-                  <ProgressiveImage
-                    logos={edu.logos}
+                  <SimpleImage
+                    logoPath={edu.logoPath}
                     alt={`${edu.school} logo`}
                     className="w-12 h-12 object-contain"
                   />

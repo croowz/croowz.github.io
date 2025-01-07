@@ -20,17 +20,9 @@ const ProfileSection = () => {
     return years;
   }, []);
 
-  const profileImages = {
-    light: {
-      jxl: "/images/Profile.jxl",
-      webp: "/images/Profile.webp",
-      png: "/images/Profile.png"
-    },
-    dark: {
-      jxl: "/images/Profile.jxl",
-      webp: "/images/Profile.webp",
-      png: "/images/Profile.png"
-    }
+  const profileImage = {
+    avif: "/images/Profile.avif",
+    png: "/images/Profile.png"
   };
 
   return (
@@ -38,8 +30,8 @@ const ProfileSection = () => {
       <div className="mb-6">
         <div className="w-32 h-32 mx-auto mb-4">
           <ProgressiveImage
-            logos={profileImages.light}
-            darkLogos={profileImages.dark}
+            avifSrc={profileImage.avif}
+            pngSrc={profileImage.png}
             alt="Profile"
             className="w-32 h-32 rounded-full object-cover 
                      border-4 border-primary-500 dark:border-primary-400"
