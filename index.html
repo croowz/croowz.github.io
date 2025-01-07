@@ -7,33 +7,9 @@
     <meta name="description" content="Personal website showcasing professional experience and skills" />
     <title>Personal Website</title>
 
-    <!-- Critical image preloading for both themes -->
+    <!-- Theme initialization script -->
     <script>
       (function() {
-        // Images that need preloading for both themes
-        const criticalImages = [
-          { light: '/images/apple-light.webp', dark: '/images/apple-dark.webp' },
-          // Add other theme-dependent images here as needed
-        ];
-
-        // Helper function to create and append preload links
-        function preloadImage(src, importance = 'high') {
-          const link = document.createElement('link');
-          link.rel = 'preload';
-          link.as = 'image';
-          link.href = src;
-          link.type = 'image/webp';
-          link.importance = importance;  // Tells the browser how critical this resource is
-          document.head.appendChild(link);
-        }
-
-        // Preload all critical images immediately
-        criticalImages.forEach(({ light, dark }) => {
-          // Preload both versions of each image
-          preloadImage(light);
-          preloadImage(dark);
-        });
-
         // Set up our initial theme state
         window.__INITIAL_THEME_STATE__ = {
           isDark: false,
@@ -54,37 +30,6 @@
         if (window.__INITIAL_THEME_STATE__.isDark) {
           document.documentElement.classList.add('dark');
         }
-
-        // Set up image sources mapping
-        window.__INITIAL_IMAGE_SOURCES__ = {};
-        
-        function updateImageSources() {
-          const isDark = document.documentElement.classList.contains('dark');
-          window.__INITIAL_IMAGE_SOURCES__ = {
-            'apple-logo': isDark ? {
-              jxl: '/images/apple-dark.jxl',
-              webp: '/images/apple-dark.webp',
-              png: '/images/apple-dark.png'
-            } : {
-              jxl: '/images/apple-light.jxl',
-              webp: '/images/apple-light.webp',
-              png: '/images/apple-light.png'
-            }
-          };
-        }
-
-        // Set initial image sources
-        updateImageSources();
-
-        // Watch for theme changes
-        const observer = new MutationObserver(() => {
-          updateImageSources();
-        });
-
-        observer.observe(document.documentElement, {
-          attributes: true,
-          attributeFilter: ['class']
-        });
       })();
     </script>
   </head>

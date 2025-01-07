@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import ThemeToggle from './components/ThemeToggle'
-import ProgressiveImage from './components/ProgressiveImage'
 import SimpleImage from './components/SimpleImage'
 import ProfileSection from './components/ProfileSection'
 import HamburgerMenu from './components/HamburgerMenu' // Import the new component
