@@ -58,8 +58,16 @@ const ProfileSection = () => {
       </div>
 
       <p className="max-w-2xl mx-auto text-gray-600 dark:text-gray-400 whitespace-pre-line">
-        {`Cybersecurity Engineer with ${yearsOfExperience} years of experience. Currently building a CIAM solution for } <a href="https://www.southwest.com" target="_blank" rel="noopener noreferrer" className="text-primary-600 dark:text-primary-400 hover:underline" > Southwest Airlines </a> {.
-Working hybrid from `}
+        {`Cybersecurity Engineer with ${yearsOfExperience} years of experience. Currently building a CIAM solution for `}
+        <a
+          href="https://www.southwest.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-primary-600 dark:text-primary-400 hover:underline"
+        >
+          Southwest Airlines
+        </a>
+        {`. Working hybrid from `}
         <a
           href="https://www.google.com/maps/place/Dallas,+TX"
           target="_blank"
@@ -68,7 +76,7 @@ Working hybrid from `}
         >
           Dallas, Texas
         </a>
-        .
+        {`.`}
       </p>
     </section>
   );
