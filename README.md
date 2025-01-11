@@ -19,4 +19,4 @@ My personal website showcasing my professional experience and background. Visit 
 
 ## Building the Site
 
-Currently, this is all handled by [CloudFlare Pages](https://dash.cloudflare.com/). The site is built and deployed automatically when changes are pushed to the `source` branch.
+Currently, this is all handled by [CloudFlare Pages](https://dash.cloudflare.com/). The site is built and deployed automatically when changes are pushed to the `main` branch.
