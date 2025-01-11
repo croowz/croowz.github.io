@@ -1,3 +1,12 @@
+declare global {
+  interface Window {
+    __INITIAL_THEME_STATE__?: {
+      isDark: boolean;
+      source: 'user' | 'system';
+    };
+  }
+}
+
 import {
   createContext,
   useContext,
