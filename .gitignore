@@ -1,1 +1,12 @@
-node_modules
+# Node dependencies
+node_modules/
+
+# Build output
+dist/
+
+# IDE specific files
+.idea/
+.vscode/
+
+# macOS system files
+.DS_Store
